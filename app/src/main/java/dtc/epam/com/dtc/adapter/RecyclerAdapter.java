@@ -1,6 +1,11 @@
 package dtc.epam.com.dtc.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,7 +14,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+
+import java.lang.ref.WeakReference;
 
 import dtc.epam.com.dtc.R;
 
@@ -21,9 +32,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     private final Context mContext;
 
     private String[] mDataSet;
+    private ImageLoader imageLoader;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView iconView;
+        private final View iconbackground;
 
         public ViewHolder(View v) {
             super(v);
@@ -35,10 +48,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 }
             });
             iconView = (ImageView) v.findViewById(R.id.icon_image);
+            iconbackground = v.findViewById(R.id.icon_bacground);
         }
 
         public ImageView getImageView() {
             return iconView;
+        }
+
+        public View getBackground() {
+            return iconbackground;
         }
     }
 
@@ -47,24 +65,64 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         mContext = contexts;
     }
 
-     @Override
+    @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view.
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.adapter_item_recycler, viewGroup, false);
+        imageLoader = ImageLoader.getInstance();
         return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         Log.d(TAG, "Element " + position + " set." + mDataSet[position]);
+        final ImageView imageView = viewHolder.getImageView();
+        imageView.setImageBitmap(null);
+        final View viewBackground = viewHolder.getBackground();
+        viewBackground.setBackground(null);
+        final String url = mDataSet[position];
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageView.setTag(url);
+        imageLoader.displayImage(url, imageView, new ImageLoadingListener() {
+            @Override
+            public void onLoadingStarted(String imageUri, View view) {
 
-        // Get element from your dataset at this position and replace the contents of the view
-        // with that element
-        ImageView imageView = viewHolder.getImageView();
-        Picasso.with(mContext).load(mDataSet[position]).into(imageView);
-//        viewHolder.getImageView().setImageResource(R.drawable.ic_title);
+            }
+
+            @Override
+            public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+
+            }
+
+            @Override
+            public void onLoadingComplete(String imageUri, View view, Bitmap bitmap) {
+                Log.d(TAG, "Loader Url*** " + url);
+                Palette palette = Palette.generate(bitmap);
+                Palette.Swatch swatch = palette.getVibrantSwatch();
+                int rgbColor = swatch.getRgb();
+
+                GradientDrawable gd = new GradientDrawable(
+                        GradientDrawable.Orientation.BOTTOM_TOP,
+                        new int[]{rgbColor, Color.TRANSPARENT});
+                gd.setCornerRadius(0f);
+                String tag = (String) view.getTag();
+                if (tag.contains(url)) {
+                    viewBackground.setBackgroundDrawable(gd);
+                    viewBackground.setAlpha(0.6f);
+                    imageView.setImageBitmap(bitmap);
+                }
+            }
+
+
+            @Override
+            public void onLoadingCancelled(String url, View view) {
+
+            }
+
+        });
     }
+
 
     @Override
     public int getItemCount() {
