@@ -8,12 +8,11 @@ import dtc.epam.com.dtc.R;
  */
 public enum EnumMenuItems {
 
-    Home(R.string.home, R.drawable.ic_title),
-    Random(R.string.random, R.drawable.ic_title),
-    Nearby(R.string.nearby, R.drawable.ic_title),
-    Favourites(R.string.favourites, R.drawable.ic_title),
-    Watchlist(R.string.watchlist, R.drawable.ic_title),
-    Log_in(R.string.log_in, R.drawable.ic_title);
+    Watch_Life(R.string.home, R.mipmap.ic_action_hardware_tv),
+    TV_Schedule(R.string.random, R.mipmap.ic_action_av_web),
+    Destination_Passport(R.string.nearby, R.mipmap.ic_action_device_dvr),
+    Last_Episodes(R.string.favourites, R.mipmap.ic_action_maps_local_movies),
+    My_profile(R.string.watchlist, R.mipmap.ic_action_social_person_outline);
 
     private int mTitle;
     private int mIcon;

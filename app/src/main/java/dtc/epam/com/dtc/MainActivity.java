@@ -1,6 +1,7 @@
 package dtc.epam.com.dtc;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.FragmentTransaction;
@@ -32,23 +33,17 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.decode.BaseImageDecoder;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
+import dtc.epam.com.dtc.activity.ScheduleActivity;
 import dtc.epam.com.dtc.adapter.MenuAdapter;
 import dtc.epam.com.dtc.adapter.RecyclerAdapter;
+import dtc.epam.com.dtc.fragment.MainPageFragment;
 import dtc.epam.com.dtc.utils.CircleMaskedBitmap;
 import dtc.epam.com.dtc.utils.EnumMenuItems;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String[] DATA = {"http://kstc45.com/images/middle.jpg",
-            "http://www.ketnet.be/sites/default/files/imagecache/zones_oneblock/image/article/pieterKonijnThumb.jpg",
-            "http://www.disneyfan.nl/images/A-Kind-of-Magic.jpg",
-            "http://images.bwwstatic.com/tvshowlogos/E1460F0F-CB93-C2B6-06EB3F6DCEEA9DF5.jpg",
-            "http://www.televizier.nl/Uploads/Cache/programs/9/b/2/150301021240.9b2af309035c7064a74870fbba525af482c09a79.shrinkcentercrop.625x264.jpg",
-            "http://assets.www.npo.nl/uploads/media_item/media_item/75/17/ali_b_op_volle_toeren_carousel_missed-1418379515.jpg",
-            "http://1.bp.blogspot.com/_mWVTuH-K-n0/TSXwG02_wSI/AAAAAAAAADE/ogGrhtcgouE/s1600/Strike+Back+%2528BBCGermany+06.01.11%2529.jpg",
-            "http://www.ridetech.com/info/wp-content/uploads/2012/09/cast-of-fast-n-loud-3.jpg",
-            "http://images.poms.omroep.nl/image/s564/c564x315/551503.png"};
+
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
     private RecyclerAdapter mAdapter;
@@ -79,13 +74,13 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         ImageLoader.getInstance().init(config);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+       /* mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setHasFixedSize(true);
         // specify an adapter (see also next example)
         mAdapter = new RecyclerAdapter(this, DATA);
-        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mAdapter);*/
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
         setSupportActionBar(toolbar);
@@ -104,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerList.addHeaderView(mHeaderDrawer);
         mDrawerList.setHeaderDividersEnabled(true);
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         displayView(1);
         final MenuAdapter menuAdapter = new MenuAdapter(this, EnumMenuItems.values());
@@ -125,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         mDrawerToggle.setDrawerIndicatorEnabled(true);
+        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, Gravity.START);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
     }
@@ -144,28 +141,28 @@ public class MainActivity extends AppCompatActivity {
             Log.d(this.getLocalClassName(), name);
             FragmentTransaction transactionWiki = getSupportFragmentManager().beginTransaction();
             switch (EnumMenuItems.valueOf(name)) {
-                case Home:
-//                    MainPageFragment fragmentPage = new MainPageFragment();
-//                    transactionWiki.replace(R.id.framemain, fragmentPage);
+                case Watch_Life:
+                    MainPageFragment fragmentPage = new MainPageFragment();
+                    transactionWiki.replace(R.id.framemain, fragmentPage);
                     mVisible = false;
                     mDrawerLayout.closeDrawer(mDrawerList);
                     break;
-                case Random:
-//                    RandomCategoryFragment categoryFragment = new RandomCategoryFragment();
-//                    transactionWiki.replace(R.id.framemain, categoryFragment);
+                case TV_Schedule:
+                    Intent intent = new Intent(this, ScheduleActivity.class);
+                    this.startActivity(intent);
                     mVisible = false;
                     mDrawerLayout.closeDrawer(mDrawerList);
                     break;
-                case Nearby:
+                case Destination_Passport:
                     mVisible = false;
                     break;
-                case Favourites:
+                case Last_Episodes:
                     mVisible = true;
                     break;
-                case Watchlist:
+                case My_profile:
                     mVisible = true;
                     break;
-                case Log_in:
+
                 default:
                     mDrawerLayout.closeDrawer(mDrawerList);
                     return;
@@ -198,4 +195,23 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void setTitle(CharSequence title) {
+        mTitle = title;
+        getSupportActionBar().setTitle(mTitle);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
 }
