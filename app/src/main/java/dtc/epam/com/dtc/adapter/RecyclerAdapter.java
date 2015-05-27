@@ -28,6 +28,7 @@ import dtc.epam.com.dtc.R;
  * Created by Yauheni_Meshkin on 5/22/2015.
  */
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+
     private static final String TAG = "CustomAdapter";
     private final Context mContext;
 

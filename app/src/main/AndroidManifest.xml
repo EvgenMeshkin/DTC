@@ -23,7 +23,7 @@
         </activity>
         <activity
             android:name=".activity.ScheduleActivity"
-            android:label="@string/app_name">
+            android:label="@string/nearby">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

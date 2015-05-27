@@ -138,9 +138,9 @@ public class MainActivity extends AppCompatActivity {
     private void displayView(int position) {
         if (position <= EnumMenuItems.values().length) {
             String name = getResources().getString(EnumMenuItems.values()[position - 1].getTitle());
-            Log.d(this.getLocalClassName(), name);
             FragmentTransaction transactionWiki = getSupportFragmentManager().beginTransaction();
-            switch (EnumMenuItems.valueOf(name)) {
+            EnumMenuItems item = EnumMenuItems.values()[position - 1];
+            switch (item) {
                 case Watch_Life:
                     MainPageFragment fragmentPage = new MainPageFragment();
                     transactionWiki.replace(R.id.framemain, fragmentPage);

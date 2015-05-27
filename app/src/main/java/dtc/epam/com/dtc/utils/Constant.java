@@ -13,4 +13,10 @@ public class Constant {
             "http://1.bp.blogspot.com/_mWVTuH-K-n0/TSXwG02_wSI/AAAAAAAAADE/ogGrhtcgouE/s1600/Strike+Back+%2528BBCGermany+06.01.11%2529.jpg",
             "http://www.ridetech.com/info/wp-content/uploads/2012/09/cast-of-fast-n-loud-3.jpg",
             "http://images.poms.omroep.nl/image/s564/c564x315/551503.png"};
+
+        public static final String[] MAIN_DATA = {"Today in New York",
+                "Beginning with Lollipop",
+                "When you reference",
+                "Layout manager that",
+                "For more information"};
 }
