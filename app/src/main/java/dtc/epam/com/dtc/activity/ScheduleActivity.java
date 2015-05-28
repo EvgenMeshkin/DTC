@@ -33,13 +33,8 @@ import dtc.epam.com.dtc.view.SlidingTabLayout;
  */
 public class ScheduleActivity extends AppCompatActivity {
 
-    private RecyclerView mRecyclerView;
-    private LinearLayoutManager mLayoutManager;
-    private RecyclerAdapter mAdapter;
     private ViewPager mViewPager;
-    private FragmentTabHost mTabHost;
-    private TabWidget mTabWidget;
-    private SlidingTabLayout mSlidingTabLayout;
+     private SlidingTabLayout mSlidingTabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,35 +46,14 @@ public class ScheduleActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-
-
-       /* mTabWidget = (TabWidget) findViewById(android.R.id.tabs);
-        mTabWidget.setShowDividers(LinearLayout.SHOW_DIVIDER_NONE);
-
-        mTabHost = (FragmentTabHost)findViewById(R.id.tabhost);
-        mTabHost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
-        mTabHost.getTabWidget().setStripEnabled(false);
-        mTabHost.addTab(mTabHost.newTabSpec("tab1").setIndicator("11 FEB"),
-                ScheduleFragment.class, null);
-        mTabHost.addTab(mTabHost.newTabSpec("tab2").setIndicator("12 FEB"),
-                ScheduleFragment.class, null);
-        mTabHost.addTab(mTabHost.newTabSpec("tab3").setIndicator("13 FEB"),
-                ScheduleFragment.class, null);*/
-
         List<Fragment> mTabs = new ArrayList<>();
         mTabs.add(new ScheduleFragment());
         mTabs.add(new ScheduleFragment());
         mTabs.add(new ScheduleFragment());
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager(), mTabs));
-//        setContentView(mViewPager);
-
         mSlidingTabLayout = (SlidingTabLayout) findViewById(R.id.sliding_tabs);
         mSlidingTabLayout.setViewPager(mViewPager);
-
-        // BEGIN_INCLUDE (tab_colorizer)
-        // Set a TabColorizer to customize the indicator and divider colors. Here we just retrieve
-        // the tab at the position, and return it's set color
         mSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
 
             @Override

@@ -70,12 +70,17 @@
             android:textColor="@color/drawer_item_color"
             android:textSize="14sp" />
 
-        <FrameLayout
+        <RelativeLayout
             android:id="@+id/framemainpage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="gone"
             android:layout_below="@id/my_awesome_toolbar">
-        </FrameLayout>
+            <include layout="@layout/fragment_description"
+                android:id="@+id/include_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </RelativeLayout>
 
     </RelativeLayout>
 

@@ -1,6 +1,7 @@
 package dtc.epam.com.dtc.fragment;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
@@ -18,6 +19,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,6 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dtc.epam.com.dtc.R;
+import dtc.epam.com.dtc.activity.DescriptionActivity;
+import dtc.epam.com.dtc.activity.ScheduleActivity;
 import dtc.epam.com.dtc.adapter.FragmentPagerAdapter;
 import dtc.epam.com.dtc.adapter.FragmentPagerMainAdapter;
 import dtc.epam.com.dtc.adapter.RecyclerAdapter;
@@ -47,6 +51,9 @@ public class MainPageFragment extends Fragment {
     private LinearLayoutManager mLayoutManager;
     private RecyclerMainPageAdapter mAdapter;
     private TextView mDescFragment;
+    private ViewGroup mFrameMain;
+    private ViewGroup mFrameInclude;
+    private TextView mShedules;
 
     @Nullable
     @Override
@@ -63,14 +70,42 @@ public class MainPageFragment extends Fragment {
         mTitle = (TextView) content.findViewById(R.id.titleText);
         mDescription = (TextView) content.findViewById(R.id.descriptionText);
         mDescFragment = (TextView) content.findViewById(R.id.description);
+        mShedules = (TextView) content.findViewById(R.id.shedules);
+        mShedules.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ScheduleActivity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
+
+        mFrameMain = (ViewGroup) content.findViewById(R.id.framemainpage);
+        mFrameInclude = (ViewGroup) content.findViewById(R.id.include_frame);
+        ImageView iconClose = (ImageView) mFrameInclude.findViewById(R.id.icon_close);
+        Button btnWatch = (Button) mFrameInclude.findViewById(R.id.btn_watch);
+        btnWatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DescriptionActivity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
+        iconClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFrameMain.setVisibility(View.GONE);
+                mDescFragment.setVisibility(View.VISIBLE);
+                mTitle.setVisibility(View.VISIBLE);
+                mDescription.setVisibility(View.VISIBLE);
+            }
+        });
         mDescFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction transactionWiki = getFragmentManager().beginTransaction();
-                DescriptionFragment fragmentPage = new DescriptionFragment();
-                transactionWiki.replace(R.id.framemainpage, fragmentPage);
-                transactionWiki.commit();
+                mFrameMain.setVisibility(View.VISIBLE);
                 mDescFragment.setVisibility(View.GONE);
+                mTitle.setVisibility(View.GONE);
+                mDescription.setVisibility(View.GONE);
             }
         });
         includeConteiner.removeAllViews();

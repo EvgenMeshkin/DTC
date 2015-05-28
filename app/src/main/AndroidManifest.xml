@@ -23,7 +23,14 @@
         </activity>
         <activity
             android:name=".activity.ScheduleActivity"
-            android:label="@string/nearby">
+            android:label="@string/random">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".activity.DescriptionActivity"
+            android:label="@string/empty">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />

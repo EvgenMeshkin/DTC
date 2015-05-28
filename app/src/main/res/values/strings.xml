@@ -10,4 +10,5 @@
     <string name="favourites">Last Episodes</string>
     <string name="watchlist">My profile</string>
     <string name="log_in">Log in</string>
+    <string name="empty"> </string>
 </resources>

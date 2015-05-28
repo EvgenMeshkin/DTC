@@ -37,6 +37,8 @@ import dtc.epam.com.dtc.activity.ScheduleActivity;
 import dtc.epam.com.dtc.adapter.MenuAdapter;
 import dtc.epam.com.dtc.adapter.RecyclerAdapter;
 import dtc.epam.com.dtc.fragment.MainPageFragment;
+import dtc.epam.com.dtc.fragment.PassportFragment;
+import dtc.epam.com.dtc.fragment.ProfileFragment;
 import dtc.epam.com.dtc.utils.CircleMaskedBitmap;
 import dtc.epam.com.dtc.utils.EnumMenuItems;
 
@@ -154,12 +156,17 @@ public class MainActivity extends AppCompatActivity {
                     mDrawerLayout.closeDrawer(mDrawerList);
                     break;
                 case Destination_Passport:
+                    PassportFragment fragmentPassport = new PassportFragment();
+                    transactionWiki.replace(R.id.framemain, fragmentPassport);
                     mVisible = false;
                     break;
                 case Last_Episodes:
+
                     mVisible = true;
                     break;
                 case My_profile:
+                    ProfileFragment fragmentProfile = new ProfileFragment();
+                    transactionWiki.replace(R.id.framemain, fragmentProfile);
                     mVisible = true;
                     break;
 
