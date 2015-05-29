@@ -57,7 +57,11 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:textColor="@color/drawer_item_color"
-            android:textSize="32sp" />
+            android:textSize="32sp"
+            android:shadowColor="@color/black"
+            android:shadowDx="0"
+            android:shadowDy="2"
+            android:shadowRadius="4"/>
 
         <TextView
             android:id="@+id/descriptionText"
@@ -68,15 +72,19 @@
             android:layout_marginTop="12dp"
             android:gravity="center"
             android:textColor="@color/drawer_item_color"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:shadowColor="@color/black"
+            android:shadowDx="0"
+            android:shadowDy="2"
+            android:shadowRadius="4"/>
 
         <RelativeLayout
             android:id="@+id/framemainpage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"
-            android:layout_below="@id/my_awesome_toolbar">
-            <include layout="@layout/fragment_description"
+            android:layout_below="@id/awesome_toolbar">
+            <include layout="@layout/view_description"
                 android:id="@+id/include_frame"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>

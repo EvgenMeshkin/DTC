@@ -1,17 +1,13 @@
 package dtc.epam.com.dtc.fragment;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,21 +21,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import dtc.epam.com.dtc.R;
 import dtc.epam.com.dtc.activity.DescriptionActivity;
 import dtc.epam.com.dtc.activity.ScheduleActivity;
-import dtc.epam.com.dtc.adapter.FragmentPagerAdapter;
-import dtc.epam.com.dtc.adapter.FragmentPagerMainAdapter;
-import dtc.epam.com.dtc.adapter.RecyclerAdapter;
-import dtc.epam.com.dtc.adapter.RecyclerMainPageAdapter;
+import dtc.epam.com.dtc.adapter.FragmentPagerDestinationAdapter;
+import dtc.epam.com.dtc.adapter.RecyclerDestinationAdapter;
 import dtc.epam.com.dtc.utils.Constant;
 
 /**
  * Created by Yauheni_Meshkin on 5/26/2015.
  */
-public class MainPageFragment extends Fragment {
+public class DestinationFragment extends Fragment {
 
     private ViewPager mViewPager;
     private ArrayList<Fragment> mTabs;
@@ -49,7 +42,7 @@ public class MainPageFragment extends Fragment {
     private TextView mDescription;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
-    private RecyclerMainPageAdapter mAdapter;
+    private RecyclerDestinationAdapter mAdapter;
     private TextView mDescFragment;
     private ViewGroup mFrameMain;
     private ViewGroup mFrameInclude;
@@ -58,15 +51,15 @@ public class MainPageFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
-        View content = inflater.inflate(R.layout.fragment_main_page, null);
+        View content = inflater.inflate(R.layout.fragment_destination, null);
 
         mTabs = new ArrayList<>();
-        mTabs.add(new MainSubFragment());
-        mTabs.add(new MainSubFragment());
-        mTabs.add(new MainSubFragment());
+        mTabs.add(new DestinationSubFragment());
+        mTabs.add(new DestinationSubFragment());
+        mTabs.add(new DestinationSubFragment());
         final ViewGroup includeConteiner = (ViewGroup) content.findViewById(R.id.container);
         mViewPager = (ViewPager) content.findViewById(R.id.viewpagersub);
-        mViewPager.setAdapter(new FragmentPagerMainAdapter(getFragmentManager(), mTabs));
+        mViewPager.setAdapter(new FragmentPagerDestinationAdapter(getFragmentManager(), mTabs));
         mTitle = (TextView) content.findViewById(R.id.titleText);
         mDescription = (TextView) content.findViewById(R.id.descriptionText);
         mDescFragment = (TextView) content.findViewById(R.id.description);
@@ -81,7 +74,7 @@ public class MainPageFragment extends Fragment {
 
         mFrameMain = (ViewGroup) content.findViewById(R.id.framemainpage);
         mFrameInclude = (ViewGroup) content.findViewById(R.id.include_frame);
-        ImageView iconClose = (ImageView) mFrameInclude.findViewById(R.id.icon_close);
+        ViewGroup iconClose = (ViewGroup) mFrameInclude.findViewById(R.id.icon_close);
         Button btnWatch = (Button) mFrameInclude.findViewById(R.id.btn_watch);
         btnWatch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +109,7 @@ public class MainPageFragment extends Fragment {
         mLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setHasFixedSize(true);
-        mAdapter = new RecyclerMainPageAdapter(getActivity(), Constant.MAIN_DATA);
+        mAdapter = new RecyclerDestinationAdapter(getActivity(), Constant.MAIN_DATA);
         mRecyclerView.setAdapter(mAdapter);
 
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {

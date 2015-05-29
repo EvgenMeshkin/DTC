@@ -9,20 +9,20 @@ import java.util.List;
 import dtc.epam.com.dtc.fragment.ScheduleFragment;
 
 /**
- * Created by Yauheni_Meshkin on 5/27/2015.
+ * Created by Yauheni_Meshkin on 5/26/2015.
  */
-public class FragmentPagerMainAdapter extends FragmentStatePagerAdapter {
+public class FragmentPagerSheduleAdapter extends FragmentStatePagerAdapter {
 
     private List<Fragment> mTabs;
 
-    public FragmentPagerMainAdapter(FragmentManager fm, List<Fragment> mTabs) {
+    public FragmentPagerSheduleAdapter(FragmentManager fm, List<Fragment> mTabs) {
         super(fm);
         this.mTabs = mTabs;
     }
 
     @Override
     public Fragment getItem(int i) {
-        return mTabs.get(i);
+        return new ScheduleFragment();
     }
 
     @Override
@@ -32,7 +32,9 @@ public class FragmentPagerMainAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return "Title " + position;
+        return  10 + position + " FEB";
     }
 
 }
+
+

@@ -10,16 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import dtc.epam.com.dtc.R;
-import dtc.epam.com.dtc.adapter.RecyclerAdapter;
+import dtc.epam.com.dtc.adapter.RecyclerScheduleAdapter;
 import dtc.epam.com.dtc.utils.Constant;
 
 /**
  * Created by Yauheni_Meshkin on 5/26/2015.
  */
 public class ScheduleFragment extends Fragment {
+
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
-    private RecyclerAdapter mAdapter;
+    private RecyclerScheduleAdapter mAdapter;
 
     @Nullable
     @Override
@@ -30,8 +31,9 @@ public class ScheduleFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setHasFixedSize(true);
         // specify an adapter (see also next example)
-        mAdapter = new RecyclerAdapter(getActivity(), Constant.DATA);
+        mAdapter = new RecyclerScheduleAdapter(getActivity(), Constant.DATA);
         mRecyclerView.setAdapter(mAdapter);
         return content;
     }
+
 }

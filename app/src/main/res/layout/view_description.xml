@@ -3,60 +3,56 @@
     android:layout_height="match_parent"
     android:background="@color/grey_background"
     android:padding="12dp">
-    <!--<View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/email"
-        android:background="@color/list_background_pressed"
-        android:alpha="0.3"
-        android:scaleType="centerInside"/>-->
 
     <ImageView
         android:id="@+id/icon"
         android:layout_width="24sp"
         android:layout_height="24sp"
-        android:background="@android:drawable/ic_dialog_info"
         android:layout_alignParentLeft="true"
-        />
+        android:background="@android:drawable/ic_dialog_info" />
 
 
     <TextView
         android:id="@+id/contentText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/icon"
-        android:text="DETAILS"
-        android:gravity="center"
         android:layout_marginLeft="12dp"
+        android:layout_toRightOf="@+id/icon"
+        android:gravity="center"
+        android:text="DETAILS"
         android:textColor="@color/drawer_item_color"
         android:textSize="20sp" />
 
-    <ImageView
+    <RelativeLayout
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:id="@+id/icon_close"
-        android:layout_width="20sp"
-        android:layout_height="20sp"
-        android:padding="12dp"
-        android:background="@mipmap/ic_close"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="12dp"
-        />
+        android:layout_marginLeft="12dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@mipmap/ic_close"
+            android:padding="12dp" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/descriptionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="The Android Holo Colors Generator allows you to easily create Android components such as editext or spinner with your own colours for your Android application - See more at: http://android-holo-colors.com/#sthash.baVlZu97.dpuf"
         android:layout_below="@+id/contentText"
+        android:layout_marginBottom="20dp"
+        android:text="The Android Holo Colors Generator allows you to easily create Android components such as editext or spinner with your own colours for your Android application - See more at: http://android-holo-colors.com/#sthash.baVlZu97.dpuf"
         android:textColor="@color/drawer_item_color"
-        android:textSize="12sp"
-        android:layout_marginBottom="20dp"/>
+        android:textSize="12sp" />
 
     <Button
+        android:id="@+id/btn_watch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/descriptionText"
         android:text="WATCH EPISODE"
-        android:textColor="@color/grey"
-        android:id="@+id/btn_watch"
-        android:layout_below="@+id/descriptionText"/>
+        android:textColor="@color/grey" />
 
 </RelativeLayout>

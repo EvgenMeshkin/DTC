@@ -5,6 +5,7 @@
         <!-- Customize your theme here. -->
 
     </style>
+
     <style name="AppTheme.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
@@ -16,6 +17,7 @@
         <item name="colorPrimary">@color/list_background</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/list_background</item>
+
     </style>
 
 </resources>

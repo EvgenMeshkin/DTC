@@ -3,7 +3,6 @@ package dtc.epam.com.dtc.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
@@ -12,28 +11,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
-
-import java.lang.ref.WeakReference;
 
 import dtc.epam.com.dtc.R;
 
 /**
  * Created by Yauheni_Meshkin on 5/22/2015.
  */
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class RecyclerScheduleAdapter extends RecyclerView.Adapter<RecyclerScheduleAdapter.ViewHolder> {
 
     private static final String TAG = "CustomAdapter";
-    private final Context mContext;
-
     private String[] mDataSet;
-    private ImageLoader imageLoader;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView iconView;
@@ -61,9 +55,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         }
     }
 
-    public RecyclerAdapter(Context contexts, String[] dataSet) {
+    public RecyclerScheduleAdapter(Context contexts, String[] dataSet) {
         mDataSet = dataSet;
-        mContext = contexts;
     }
 
     @Override
@@ -71,7 +64,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         // Create a new view.
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.adapter_item_recycler, viewGroup, false);
-        imageLoader = ImageLoader.getInstance();
         return new ViewHolder(v);
     }
 
@@ -83,9 +75,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         final View viewBackground = viewHolder.getBackground();
         viewBackground.setBackground(null);
         final String url = mDataSet[position];
+
         ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(imageView.getContext()));
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+                .imageScaleType(ImageScaleType.IN_SAMPLE_INT)
+                .cacheInMemory()
+                .cacheOnDisc()
+                .build();
+
         imageView.setTag(url);
-        imageLoader.displayImage(url, imageView, new ImageLoadingListener() {
+        imageLoader.displayImage(url, imageView, options, new ImageLoadingListener() {
             @Override
             public void onLoadingStarted(String imageUri, View view) {
 
@@ -100,7 +100,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             public void onLoadingComplete(String imageUri, View view, Bitmap bitmap) {
                 Log.d(TAG, "Loader Url*** " + url);
                 Palette palette = Palette.generate(bitmap);
-                Palette.Swatch swatch = palette.getVibrantSwatch();
+                Palette.Swatch swatch = palette.getMutedSwatch();
                 int rgbColor = swatch.getRgb();
 
                 GradientDrawable gd = new GradientDrawable(
@@ -114,7 +114,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     imageView.setImageBitmap(bitmap);
                 }
             }
-
 
             @Override
             public void onLoadingCancelled(String url, View view) {

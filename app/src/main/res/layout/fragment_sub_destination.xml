@@ -7,13 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/email"
-        android:background="@drawable/image_background"
-        android:scaleType="centerInside"/>
+        android:src="@drawable/image_background"
+        android:scaleType="centerCrop"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/email"
-        android:background="@color/list_background_pressed"
+        android:src="@color/list_background_pressed"
         android:alpha="0.3"
-        android:scaleType="centerInside"/>
+        android:scaleType="centerCrop"/>
+
 </RelativeLayout>

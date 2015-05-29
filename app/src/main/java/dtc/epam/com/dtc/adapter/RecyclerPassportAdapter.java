@@ -3,9 +3,6 @@ package dtc.epam.com.dtc.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,7 +16,6 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import dtc.epam.com.dtc.R;
 import dtc.epam.com.dtc.activity.DescriptionActivity;
-import dtc.epam.com.dtc.activity.ScheduleActivity;
 
 /**
  * Created by Yauheni_Meshkin on 5/28/2015.
@@ -27,10 +23,7 @@ import dtc.epam.com.dtc.activity.ScheduleActivity;
 public class RecyclerPassportAdapter extends RecyclerView.Adapter<RecyclerPassportAdapter.ViewHolder> {
 
     private static final String TAG = "CustomAdapter";
-    private final Context mContext;
-
     private String[] mDataSet;
-    private ImageLoader imageLoader;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView iconView;
@@ -38,7 +31,6 @@ public class RecyclerPassportAdapter extends RecyclerView.Adapter<RecyclerPasspo
 
         public ViewHolder(View v) {
             super(v);
-            // Define click listener for the ViewHolder's View.
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -62,7 +54,6 @@ public class RecyclerPassportAdapter extends RecyclerView.Adapter<RecyclerPasspo
 
     public RecyclerPassportAdapter(Context contexts, String[] dataSet) {
         mDataSet = dataSet;
-        mContext = contexts;
     }
 
     @Override
@@ -70,7 +61,6 @@ public class RecyclerPassportAdapter extends RecyclerView.Adapter<RecyclerPasspo
         // Create a new view.
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.adapter_item_passport, viewGroup, false);
-        imageLoader = ImageLoader.getInstance();
         return new ViewHolder(v);
     }
 
@@ -79,8 +69,6 @@ public class RecyclerPassportAdapter extends RecyclerView.Adapter<RecyclerPasspo
         Log.d(TAG, "Element " + position + " set." + mDataSet[position]);
         final ImageView imageView = viewHolder.getImageView();
         imageView.setImageBitmap(null);
-        /*final View viewBackground = viewHolder.getBackground();
-        viewBackground.setBackground(null);*/
         final String url = mDataSet[position];
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageView.setTag(url);
@@ -98,18 +86,8 @@ public class RecyclerPassportAdapter extends RecyclerView.Adapter<RecyclerPasspo
             @Override
             public void onLoadingComplete(String imageUri, View view, Bitmap bitmap) {
                 Log.d(TAG, "Loader Url*** " + url);
-               /* Palette palette = Palette.generate(bitmap);
-                Palette.Swatch swatch = palette.getVibrantSwatch();
-                int rgbColor = swatch.getRgb();
-
-                GradientDrawable gd = new GradientDrawable(
-                        GradientDrawable.Orientation.BOTTOM_TOP,
-                        new int[]{rgbColor, Color.TRANSPARENT});
-                gd.setCornerRadius(0f);*/
                 String tag = (String) view.getTag();
                 if (tag.contains(url)) {
-                    /*viewBackground.setBackgroundDrawable(gd);
-                    viewBackground.setAlpha(0.6f);*/
                     imageView.setImageBitmap(bitmap);
                 }
             }

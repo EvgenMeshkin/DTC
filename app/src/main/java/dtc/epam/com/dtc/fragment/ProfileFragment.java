@@ -7,26 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import dtc.epam.com.dtc.R;
-
-import static dtc.epam.com.dtc.R.color.background_floating_material_dark;
-import static dtc.epam.com.dtc.R.color.grey;
-import static dtc.epam.com.dtc.R.color.white;
 
 /**
  * Created by Yauheni_Meshkin on 5/28/2015.
  */
 public class ProfileFragment extends Fragment {
 
-    private boolean clickDown = true;
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View content = inflater.inflate(R.layout.fragment_profile_main, null);
+        View content = inflater.inflate(R.layout.fragment_profile, null);
 
         ViewGroup memberShipMain = (ViewGroup) content.findViewById(R.id.membership);
         View rowView = View.inflate(getActivity(), R.layout.item_membership, null);

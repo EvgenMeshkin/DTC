@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import dtc.epam.com.dtc.R;
-import dtc.epam.com.dtc.adapter.RecyclerAdapter;
 import dtc.epam.com.dtc.adapter.RecyclerPassportAdapter;
 import dtc.epam.com.dtc.utils.Constant;
 

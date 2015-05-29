@@ -1,4 +1,4 @@
-package dtc.epam.com.dtc;
+package dtc.epam.com.dtc.activity;
 
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -7,14 +7,12 @@ import android.graphics.BitmapFactory;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,20 +21,14 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
-import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
-import com.nostra13.universalimageloader.cache.memory.impl.UsingFreqLimitedMemoryCache;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.decode.BaseImageDecoder;
-import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
-import dtc.epam.com.dtc.activity.ScheduleActivity;
+import dtc.epam.com.dtc.R;
 import dtc.epam.com.dtc.adapter.MenuAdapter;
-import dtc.epam.com.dtc.adapter.RecyclerAdapter;
-import dtc.epam.com.dtc.fragment.MainPageFragment;
+import dtc.epam.com.dtc.adapter.RecyclerScheduleAdapter;
+import dtc.epam.com.dtc.fragment.DestinationFragment;
 import dtc.epam.com.dtc.fragment.PassportFragment;
 import dtc.epam.com.dtc.fragment.ProfileFragment;
 import dtc.epam.com.dtc.utils.CircleMaskedBitmap;
@@ -45,18 +37,12 @@ import dtc.epam.com.dtc.utils.EnumMenuItems;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private RecyclerView mRecyclerView;
-    private LinearLayoutManager mLayoutManager;
-    private RecyclerAdapter mAdapter;
-
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private View mHeaderDrawer;
-    private boolean mVisible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,16 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 .diskCacheFileCount(100)
                 .build();
         ImageLoader.getInstance().init(config);
-
-       /* mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setHasFixedSize(true);
-        // specify an adapter (see also next example)
-        mAdapter = new RecyclerAdapter(this, DATA);
-        mRecyclerView.setAdapter(mAdapter);*/
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.awesome_toolbar);
         setSupportActionBar(toolbar);
         mTitle = getTitle();
         mHeaderDrawer = View.inflate(this, R.layout.view_header_start, null);
@@ -144,30 +121,24 @@ public class MainActivity extends AppCompatActivity {
             EnumMenuItems item = EnumMenuItems.values()[position - 1];
             switch (item) {
                 case Watch_Life:
-                    MainPageFragment fragmentPage = new MainPageFragment();
+                    DestinationFragment fragmentPage = new DestinationFragment();
                     transactionWiki.replace(R.id.framemain, fragmentPage);
-                    mVisible = false;
                     mDrawerLayout.closeDrawer(mDrawerList);
                     break;
                 case TV_Schedule:
                     Intent intent = new Intent(this, ScheduleActivity.class);
                     this.startActivity(intent);
-                    mVisible = false;
                     mDrawerLayout.closeDrawer(mDrawerList);
                     break;
                 case Destination_Passport:
                     PassportFragment fragmentPassport = new PassportFragment();
                     transactionWiki.replace(R.id.framemain, fragmentPassport);
-                    mVisible = false;
                     break;
                 case Last_Episodes:
-
-                    mVisible = true;
                     break;
                 case My_profile:
                     ProfileFragment fragmentProfile = new ProfileFragment();
                     transactionWiki.replace(R.id.framemain, fragmentProfile);
-                    mVisible = true;
                     break;
 
                 default:
@@ -183,24 +154,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 
     @Override

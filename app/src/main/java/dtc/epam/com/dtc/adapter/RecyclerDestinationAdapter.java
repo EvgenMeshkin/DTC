@@ -1,34 +1,24 @@
 package dtc.epam.com.dtc.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import dtc.epam.com.dtc.R;
 
 /**
  * Created by Yauheni_Meshkin on 5/27/2015.
  */
-public class RecyclerMainPageAdapter extends RecyclerView.Adapter<RecyclerMainPageAdapter.ViewHolder> {
+public class RecyclerDestinationAdapter extends RecyclerView.Adapter<RecyclerDestinationAdapter.ViewHolder> {
 
     private static final String TAG = "CustomAdapter";
-    private final Context mContext;
-
     private String[] mDataSet;
-    private ImageLoader imageLoader;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView time;
@@ -58,24 +48,25 @@ public class RecyclerMainPageAdapter extends RecyclerView.Adapter<RecyclerMainPa
         public TextView getContent() {
             return content;
         }
+
         public TextView getDescribe() {
             return describe;
         }
+
         public TextView getState() {
             return state;
         }
     }
 
-    public RecyclerMainPageAdapter(Context contexts, String[] dataSet) {
+    public RecyclerDestinationAdapter(Context context, String[] dataSet) {
         mDataSet = dataSet;
-        mContext = contexts;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view.
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.adapter_item_main_page, viewGroup, false);
+                .inflate(R.layout.adapter_item_destination, viewGroup, false);
         return new ViewHolder(v);
     }
 
@@ -86,12 +77,10 @@ public class RecyclerMainPageAdapter extends RecyclerView.Adapter<RecyclerMainPa
         final TextView describe = viewHolder.getDescribe();
         final TextView content = viewHolder.getContent();
         final TextView state = viewHolder.getState();
-
         time.setText((1 + position) + ":00 AM");
         content.setText(mDataSet[position]);
         describe.setText("SEASON " + (position + 1) + " EPISODE " + (position + 2));
         state.setText("WATCH");
-
     }
 
 
