@@ -2,11 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <View
         android:id="@+id/center_viev"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true" />
 
     <TextView
         android:id="@+id/email"
@@ -21,13 +22,7 @@
         android:text="WATCH LIFE"
         android:textColor="@color/drawer_item_color"
         android:textSize="24sp" />
-    <!--<ImageView
-        android:id="@+id/icon_email"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/email"
-        android:background="@drawable/image_background"
-        android:scaleType="centerCrop"/>-->
+
     <RelativeLayout
         android:id="@+id/main_container"
         android:layout_width="match_parent"
@@ -56,12 +51,12 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:textColor="@color/drawer_item_color"
-            android:textSize="32sp"
             android:shadowColor="@color/black"
             android:shadowDx="0"
             android:shadowDy="2"
-            android:shadowRadius="4"/>
+            android:shadowRadius="4"
+            android:textColor="@color/drawer_item_color"
+            android:textSize="32sp" />
 
         <TextView
             android:id="@+id/descriptionText"
@@ -71,23 +66,25 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp"
             android:gravity="center"
-            android:textColor="@color/drawer_item_color"
-            android:textSize="14sp"
             android:shadowColor="@color/black"
             android:shadowDx="0"
             android:shadowDy="2"
-            android:shadowRadius="4"/>
+            android:shadowRadius="4"
+            android:textColor="@color/drawer_item_color"
+            android:textSize="14sp" />
 
         <RelativeLayout
             android:id="@+id/framemainpage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
-            android:layout_below="@id/awesome_toolbar">
-            <include layout="@layout/view_description"
+            android:layout_below="@id/awesome_toolbar"
+            android:visibility="gone">
+
+            <include
                 android:id="@+id/include_frame"
+                layout="@layout/view_description"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
         </RelativeLayout>
 
     </RelativeLayout>
@@ -113,10 +110,10 @@
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/circle"
-        android:layout_marginRight="24dp"
-        android:layout_alignParentRight="true"
         android:layout_above="@+id/center_viev"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/circle"
         android:gravity="center"
         android:text="i"
         android:textColor="@color/list_background_pressed"
@@ -125,9 +122,9 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_below="@+id/email"
-        android:layout_above="@+id/shedules"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/shedules"
+        android:layout_below="@+id/email" />
 
 </RelativeLayout>

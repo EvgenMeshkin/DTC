@@ -14,4 +14,7 @@
     <color name="black">#000</color>
     <color name="secondary_text">#9e9e9e</color>
     <color name="divider">#47434f</color>
+    <color name="gold">#ff9800</color>
+    <color name="blue">#3f51b5</color>
+
 </resources>

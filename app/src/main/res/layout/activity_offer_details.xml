@@ -1,116 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/list_background_pressed"
-    android:orientation="vertical">
+    android:paddingBottom="12dp"
+    android:background="@color/list_background_pressed">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/awesome_toolbar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:elevation="3dp"
-        android:minHeight="?attr/actionBarSize" />
+        android:layout_height="match_parent"
+        android:background="@color/list_background_pressed"
+        android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/list_background_pressed">
-
-        <ImageView
-            android:id="@android:id/icon"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/awesome_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/suits_new" />
+            android:background="?attr/colorPrimary"
+            android:elevation="3dp"
+            android:minHeight="?attr/actionBarSize" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_alignParentBottom="true"
-            android:background="@color/grey_background"
-            android:padding="12dp">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/list_background_pressed">
 
-            <TextView
+            <ImageView
+                android:id="@android:id/icon"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/suits_new" />
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Offer ends in 13h 12m"
-                android:layout_centerVertical="true"
-                android:textSize="18sp"
-                android:textColor="@color/white"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="BUY FOR $11.52"
-                android:textSize="18sp"
-                android:textColor="@color/white"/>
+                android:layout_height="48dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/grey_background"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Offer ends in 13h 12m"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="BUY FOR $11.52"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </RelativeLayout>
         </RelativeLayout>
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@color/list_background_pressed">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="@color/list_background_pressed">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="0"
-            android:shadowDy="2"
-            android:shadowRadius="4"
-            android:singleLine="true"
-            android:text="SUITS RESPECT"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:singleLine="true"
+                android:text="SUITS"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/title"
-            android:paddingLeft="12dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="0"
-            android:shadowDy="2"
-            android:shadowRadius="4"
-            android:singleLine="true"
-            android:text="SEASON 3 EPISODE 2"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title"
+                android:paddingLeft="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:singleLine="true"
+                android:text="SEASON 3"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/descriptionText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/description"
-            android:padding="12dp"
-            android:shadowColor="@color/black"
-            android:shadowDx="0"
-            android:shadowDy="2"
-            android:shadowRadius="4"
-            android:text="The Android Holo Colors Generator allows you to easily create Android components such as editext or spinner with your own colours for your Android application - See more at: http://android-holo-colors.com/#sthash.baVlZu97.dpuf"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/descriptionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/description"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:text="The Android Holo Colors Generator allows you to easily create Android components such as editext or spinner with your own colours for your Android application - See more at: http://android-holo-colors.com/#sthash.baVlZu97.dpuf"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
-        <ImageView
-            android:id="@android:id/icon"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_below="@+id/descriptionText"
-            android:layout_margin="12dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/image_background" />
+            <TextView
+                android:id="@+id/priemired"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/descriptionText"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:text="Premiered"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
+            <TextView
+                android:id="@+id/priemiredDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/descriptionText"
+                android:layout_marginLeft="200dp"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:text="June 23, 2011"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/detinstionRating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/priemired"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:text="Destination rating"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
 
-</LinearLayout>
+            <RatingBar
+                android:id="@+id/rating_bar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/priemired"
+                android:layout_marginLeft="212dp"
+                android:numStars="5" />
+
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/priemired"
+                android:layout_toRightOf="@id/rating_bar"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:text="4"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/ratingValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rating_bar"
+                android:layout_marginLeft="212dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:text="113 voices"
+                android:textColor="@color/secondary_text"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/imdb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ratingValue"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:text="IMDb rating"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/imdbRating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ratingValue"
+                android:layout_marginLeft="200dp"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:text="8.8"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/imdb"
+                android:layout_marginTop="12dp"
+                android:background="@color/secondary_text" />
+
+            <TextView
+                android:id="@+id/summ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:text="$ 11.52"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/serial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/summ"
+                android:padding="12dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4"
+                android:text="Serial will be available for you for 3 MONTHs"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/hd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/serial"
+                android:text="HD Available"
+                android:layout_marginLeft="12dp"
+                android:textColor="@color/white"/>
+
+            <RadioButton
+                android:id="@+id/watch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/hd"
+                android:text="Watch on laptop"
+                android:textColor="@color/white"
+                android:layout_marginLeft="12dp"/>
+
+            <Button
+                android:id="@+id/btn_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/watch"
+                android:layout_centerHorizontal="true"
+                android:background="@color/grey"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:text="PLACE ORDER"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>

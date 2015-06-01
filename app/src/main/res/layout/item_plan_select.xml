@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp">
+    <TextView
+        android:id="@android:id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GLOBAL TRAVEL"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@android:id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get instant access to every show"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@android:id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="$ 9.99 MONTH"
+        android:textColor="@color/black"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@android:id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Monthly purchase"
+        android:textColor="@color/secondary_text"
+        android:textSize="14sp" />
+</LinearLayout>
