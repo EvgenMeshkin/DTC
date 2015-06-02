@@ -19,5 +19,9 @@ public class Constant {
             "Beginning with Lollipop",
             "When you reference",
             "Layout manager that",
+            "Use a color with",
+            "Layout manager that",
+            "Here you can set",
+            "Layout manager that",
             "For more information"};
 }

@@ -117,12 +117,12 @@ public class MainActivity extends AppCompatActivity {
     private void displayView(int position) {
         if (position <= EnumMenuItems.values().length) {
             String name = getResources().getString(EnumMenuItems.values()[position - 1].getTitle());
-            FragmentTransaction transactionWiki = getSupportFragmentManager().beginTransaction();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             EnumMenuItems item = EnumMenuItems.values()[position - 1];
             switch (item) {
                 case Watch_Life:
                     DestinationFragment fragmentPage = new DestinationFragment();
-                    transactionWiki.replace(R.id.framemain, fragmentPage);
+                    transaction.replace(R.id.framemain, fragmentPage);
                     mDrawerLayout.closeDrawer(mDrawerList);
                     break;
                 case TV_Schedule:
@@ -132,21 +132,21 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case Destination_Passport:
                     PassportFragment fragmentPassport = new PassportFragment();
-                    transactionWiki.replace(R.id.framemain, fragmentPassport);
+                    transaction.replace(R.id.framemain, fragmentPassport);
                     break;
                 case Last_Episodes:
                     break;
                 case My_profile:
                     ProfileFragment fragmentProfile = new ProfileFragment();
-                    transactionWiki.replace(R.id.framemain, fragmentProfile);
+                    transaction.replace(R.id.framemain, fragmentProfile);
                     break;
 
                 default:
                     mDrawerLayout.closeDrawer(mDrawerList);
                     return;
             }
-            transactionWiki.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            transactionWiki.commit();
+            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            transaction.commit();
             mTitle = name;
             mDrawerLayout.closeDrawer(mDrawerList);
         }

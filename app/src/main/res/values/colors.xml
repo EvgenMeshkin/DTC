@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="list_background">#574f65</color>
-    <color name="list_background_alpha">#99574f65</color>
-    <color name="list_background_pressed_alpha">#99000000</color>
+    <color name="list_background_alpha">#CC574f65</color>
+    <color name="list_background_pressed_alpha">#CC000000</color>
     <color name="list_background_pressed">#333333</color>
     <color name="drawer_item_color">#fff</color>
     <color name="list_divider">#607D8B</color>
     <color name="grey">#4caf50</color>
-    <color name="grey_background">#804caf50</color>
+    <color name="grey_background">#CC4caf50</color>
     <color name="primary_dark">#FFFFFF</color>
     <color name="primary_text">#FFFFFF</color>
     <color name="white">#FFFFFF</color>
